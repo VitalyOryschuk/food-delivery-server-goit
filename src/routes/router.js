@@ -1,9 +1,9 @@
 const productsRoute = require("./products/products");
-const signUpRoute = require("./users/signUpUsers");
+const signUpUsers = require("./users/signUpUsers");
 
 const routes = {
   "/products": productsRoute,
-  "/signUp": signUpRoute
+  "/signUp": signUpUsers
 };
 
 module.exports = routes;

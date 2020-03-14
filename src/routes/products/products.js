@@ -12,7 +12,7 @@ const products = (request, response) => {
     const readProducts = fs.readFileSync(productFilePath);
 
     response.writeHead(200, {
-      "content-type": "application/json"
+      "Content-Type": "text/json"
     });
     response.write(readProducts);
     response.end();
