@@ -3,7 +3,7 @@ const signUp = require("./users/signUpUsers");
 
 const routes = {
   "/products": products,
-  "/signUp": signUp
+  "/signup": signUp
 };
 
 module.exports = routes;
