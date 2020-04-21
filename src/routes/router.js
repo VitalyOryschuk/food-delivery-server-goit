@@ -14,8 +14,8 @@ const apiRoutes = express.Router();
 apiRoutes
   .get("/products", products)
   .get("/products/:id", getProductById)
-  .get("/users", users)
   .post("/users", signUp)
+  .get("/users", users)
   .get("/users/:id", getUserById)
   .post("/orders", userOrder)
   .get("*", (req, res, next) => {

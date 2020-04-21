@@ -2,7 +2,11 @@ const fs = require("fs");
 const path = require("path");
 
 const users = (req, res) => {
-  const usersFilePath = path.join(__dirname, "../../db/users", "users.json");
+  const usersFilePath = path.join(
+    __dirname,
+    "../../db/users",
+    "all-users.json"
+  );
 
   fs.readFile(usersFilePath, (err, data) => {
     if (err) {
