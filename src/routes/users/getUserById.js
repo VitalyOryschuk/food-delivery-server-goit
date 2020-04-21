@@ -12,8 +12,7 @@ const getUserById = (req, res) => {
 
   const productFilePath = path.join(
     __dirname,
-    "../../db/users",
-    "all-users.json"
+    "../../db/products/users/all-users.json"
   );
 
   const users = JSON.parse(fs.readFileSync(productFilePath));

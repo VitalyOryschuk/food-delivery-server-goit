@@ -2,9 +2,9 @@ const fs = require("fs");
 const path = require("path");
 const shortid = require("shortid");
 
-const userPath = path.join(__dirname, "../../", "db/users/", "all-users.json");
-const signUp = (request, response) => {
-  const body = request.body;
+const userPath = path.join(__dirname, "../../db/products/users/all-users.json");
+const signUp = (req, res) => {
+  const body = req.body;
   const user = { id: shortid.generate(), ...body };
   const { username, telephone, password, email } = body;
 
@@ -19,15 +19,15 @@ const signUp = (request, response) => {
       if (err) throw err;
     });
 
-    response.writeHead(200, { "Content-type": "text/json" });
+    res.writeHead(200, { "Content-type": "text/json" });
 
-    response.write(
+    res.write(
       JSON.stringify({
         status: "success",
         user,
       })
     );
-    response.end();
+    res.end();
   }
 };
 
