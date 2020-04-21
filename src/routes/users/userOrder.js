@@ -24,8 +24,7 @@ const userOrder = (req, res) => {
 
   const productFilePath = path.join(
     __dirname,
-    "../../db/products",
-    "all-products.json"
+    "../../db/products/all-products.json"
   );
   const products = JSON.parse(fs.readFileSync(productFilePath));
 
@@ -33,7 +32,7 @@ const userOrder = (req, res) => {
 
   if (checkedOrder.length === idInRequest.length) {
     fs.mkdir(
-      path.join(__dirname, "../../db/users", "orders"),
+      path.join(__dirname, "../../db/products/users", "orders"),
       { recursive: true },
       (err) => {
         if (err) throw err;
@@ -42,7 +41,7 @@ const userOrder = (req, res) => {
 
     const filePath = path.join(
       __dirname,
-      "../../db/users/orders",
+      "../../db/products/users/orders",
       `${userId}.json`
     );
 

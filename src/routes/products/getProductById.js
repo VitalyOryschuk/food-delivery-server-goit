@@ -20,8 +20,7 @@ const getProductsById = (req, res) => {
 
   const productFilePath = path.join(
     __dirname,
-    "../../db/products",
-    "all-products.json"
+    "../../db/products/all-products.json"
   );
 
   const products = JSON.parse(fs.readFileSync(productFilePath));
