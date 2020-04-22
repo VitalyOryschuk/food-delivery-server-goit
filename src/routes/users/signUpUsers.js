@@ -1,33 +1,34 @@
 const fs = require("fs");
+const path = require("path");
+const shortid = require("shortid");
 
-const signUp = (request, response) => {
-  if (request.method === "POST") {
-    request.on("data", data => {
-      const { username, telephone, password, email } = JSON.parse(data);
-      if (username && telephone && password && email) {
-        fs.writeFile(
-          `./src/db/products/users/${username}.json`,
-          data.toString(),
-          err => {
-            if (err) throw err;
-          }
-        );
-        response.writeHead(200, { "Content-type": "text/json" });
-        response.write(
-          JSON.stringify({
-            status: "success",
-            user: { username, telephone, password, email }
-          })
-        );
-        response.end();
-      } else {
-        response.writeHead(400);
-        response.write("Data entered incorrectly");
-        response.end();
-      }
+const userPath = path.join(__dirname, "../../db/products/users/all-users.json");
+const signUp = (req, res) => {
+  const body = req.body;
+  const user = { id: shortid.generate(), ...body };
+  const { username, telephone, password, email } = body;
+
+  if (username && telephone && password && email) {
+    const data = JSON.parse(
+      fs.readFileSync(userPath, (err) => {
+        if (err) throw err;
+      })
+    );
+    data.push(user);
+    fs.writeFile(userPath, JSON.stringify(data), (err) => {
+      if (err) throw err;
     });
+
+    res.writeHead(200, { "Content-type": "text/json" });
+
+    res.write(
+      JSON.stringify({
+        status: "success",
+        user,
+      })
+    );
+    res.end();
   }
-  console.log("Wrong");
 };
 
 module.exports = signUp;
