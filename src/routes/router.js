@@ -8,6 +8,7 @@ const createProduct = require("./products/createProduct");
 const products = require("./products/products");
 const updateProduct = require("./products/updateProduct");
 const createOrders = require("./orders/createOrders");
+const getOrders = require("./orders/getOrders");
 
 const apiRoutes = express.Router();
 
@@ -19,6 +20,7 @@ apiRoutes
   .put("/users/:id", updateUser)
   // orders
   .post("/orders", createOrders)
+  .get("/orders/:id", getOrders)
   // products
   .post("/products", createProduct)
   .get(("/products", products))
