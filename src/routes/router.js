@@ -1,9 +1,9 @@
+const express = require("express");
 const products = require("./products/products");
 const signUp = require("./users/signUpUsers");
 
-const routes = {
-  "/products": products,
-  "/signup": signUp
-};
+const apiRoutes = express.Router();
 
-module.exports = routes;
+apiRoutes.get(("/products", products)).post(("/signup", signUp));
+
+module.exports = apiRoutes;
