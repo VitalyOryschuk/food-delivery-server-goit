@@ -1,6 +1,6 @@
 const express = require("express");
 const mainRoute = require("./main/main");
-// const getAllUsers = require("./users/all-users");
+const getAllUsers = require("./users/all-users");
 const getUser = require("./users/getUsers");
 const createUser = require("./users/createUser");
 const updateUser = require("./users/createUser");
@@ -14,7 +14,7 @@ const apiRoutes = express.Router();
 
 apiRoutes
   .get(("/", mainRoute))
-  // .get(("/users", getAllUsers))
+  .get(("/users", getAllUsers))
   .get("/users/:id", getUser)
   .post("/users", createUser)
   .put("/users/:id", updateUser)

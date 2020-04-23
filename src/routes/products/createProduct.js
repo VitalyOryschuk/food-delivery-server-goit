@@ -6,7 +6,7 @@ const createProduct = (req, res) => {
   const newProduct = new Product(product);
 
   const sendResponse = (product) => {
-    console.log(product);
+    // console.log(product);
 
     response.json({
       status: "success",

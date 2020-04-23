@@ -1,4 +1,4 @@
-const User = require("../../db/Schemas/user");
+const User = require("../../db/schemas/user");
 const { sendResponse, sendError } = require("../Errors/sendErrors");
 
 const allUser = (req, res) => {
