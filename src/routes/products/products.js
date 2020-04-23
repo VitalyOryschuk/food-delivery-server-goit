@@ -1,23 +1,18 @@
-const fs = require("fs");
-const path = require("path");
+const Product = require("../../db/schemas/products");
 
-const products = (request, response) => {
-  if (request.method === "GET") {
-    const productFilePath = path.join(
-      __dirname,
-      "../../db/products",
-      "all-products.json"
-    );
+const getProduct = (req, res) => {
+  const id = req.params.id;
 
-    const readProducts = fs.readFileSync(productFilePath);
+  const sendResponse = (product) => {
+    res.status(200);
+    res.json(product);
+  };
 
-    response.writeHead(200, {
-      "Content-Type": "text/json"
-    });
-    response.write(readProducts);
-    response.end();
-    return;
-  }
+  const findProduct = Product.findById(id);
+
+  findProduct.then(sendResponse).catch((err) => {
+    console.error(err);
+  });
 };
 
-module.exports = products;
+module.exports = getProduct;
