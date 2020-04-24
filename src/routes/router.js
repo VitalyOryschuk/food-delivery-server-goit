@@ -3,12 +3,13 @@ const mainRoute = require("./main/main");
 const getAllUsers = require("./users/all-users");
 const getUser = require("./users/getUsers");
 const createUser = require("./users/createUser");
-const updateUser = require("./users/createUser");
+const updateUser = require("./users/updateUser");
 const createProduct = require("./products/createProduct");
 const products = require("./products/products");
 const updateProduct = require("./products/updateProduct");
 const createOrders = require("./orders/createOrders");
 const getOrders = require("./orders/getOrders");
+const getAllOrders = require("./orders/all-orders");
 
 const apiRoutes = express.Router();
 
@@ -21,6 +22,7 @@ apiRoutes
   // orders
   .post("/orders", createOrders)
   .get("/orders/:id", getOrders)
+  .get("/orders", getAllOrders)
   // products
   .post("/products", createProduct)
   .get("/products", products)
