@@ -13,8 +13,8 @@ const getOrders = require("./orders/getOrders");
 const apiRoutes = express.Router();
 
 apiRoutes
-  .get(("/", mainRoute))
-  .get(("/users", getAllUsers))
+  .get("/", mainRoute)
+  .get("/users", getAllUsers)
   .get("/users/:id", getUser)
   .post("/users", createUser)
   .put("/users/:id", updateUser)
@@ -23,7 +23,7 @@ apiRoutes
   .get("/orders/:id", getOrders)
   // products
   .post("/products", createProduct)
-  .get(("/products", products))
+  .get("/products", products)
   .put("/products/:id", updateProduct);
 
 module.exports = apiRoutes;
