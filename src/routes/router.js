@@ -5,7 +5,8 @@ const getUser = require("./users/getUsers");
 const createUser = require("./users/createUser");
 const updateUser = require("./users/updateUser");
 const createProduct = require("./products/createProduct");
-const products = require("./products/products");
+const getProducts = require("./products/products");
+const getAllProducts = require("./products/all-products");
 const updateProduct = require("./products/updateProduct");
 const createOrders = require("./orders/createOrders");
 const getOrders = require("./orders/getOrders");
@@ -25,7 +26,8 @@ apiRoutes
   .get("/orders", getAllOrders)
   // products
   .post("/products", createProduct)
-  .get("/products", products)
+  .get("/products/:id", getProducts)
+  .get("/products", getAllProducts)
   .put("/products/:id", updateProduct);
 
 module.exports = apiRoutes;
